@@ -36,6 +36,7 @@ class ProductCard extends StatelessWidget {
       product.assetName,
       package: product.assetPackage,
       fit: BoxFit.cover,
+      //fit: BoxFit.fitWidth,
     );
 
     return Column(
