@@ -40,6 +40,25 @@ class ShrineApp extends StatelessWidget {
 // TODO: Build a Shrine Text Theme (103)
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
+TextTheme _buildShrineTextTheme(TextTheme base) {
+  return base.copyWith(
+    headline: base.headline.copyWith(
+      fontWeight: FontWeight.w500,
+    ),
+    title: base.title.copyWith(
+      fontSize: 18.0
+    ),
+    caption: base.caption.copyWith(
+      fontWeight: FontWeight.w400,
+      fontSize: 14.0,
+    ),
+  ).apply(
+    fontFamily: 'Rubik',
+    displayColor: kShrineBrown900,
+    bodyColor: kShrineBrown900,
+  );
+}
+
 ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData.light();
 
@@ -54,5 +73,14 @@ ThemeData _buildShrineTheme() {
     cardColor: kShrineBackgroundWhite,
     textSelectionColor: kShrinePink100,
     errorColor: kShrineErrorRed,
+    textTheme: _buildShrineTextTheme(base.textTheme),
+    primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
+    accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
+    primaryIconTheme: base.iconTheme.copyWith(
+      color: kShrineBrown900
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(),
+    )
   );
 }
