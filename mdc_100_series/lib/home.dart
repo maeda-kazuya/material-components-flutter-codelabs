@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import 'model/products_repository.dart';
 import 'model/product.dart';
+import 'supplemental/asymmetric_view.dart';
 
 class HomePage extends StatelessWidget {
   // TODO: Make a collection of cards (102)
@@ -12,47 +13,76 @@ class HomePage extends StatelessWidget {
     // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
     return Scaffold(
-      // TODO: Add app bar (102)
       appBar: AppBar(
+        //brightness: Brightness.light,
+        brightness: Brightness.dark,
         leading: IconButton(
-          icon: Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {
-            print('Menu button');
-          },
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              print('Menu button');
+            },
         ),
-        title: Text('Shrine'),
+        title: Text('SHRINE'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-              Icons.search,
-              semanticLabel: 'search',
-            ),
+            icon: Icon(Icons.search),
             onPressed: () {
               print('Search button');
             },
           ),
           IconButton(
-            icon: Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
-            ),
+            icon: Icon(Icons.tune),
             onPressed: () {
               print('Filter button');
             },
           ),
         ],
       ),
-      // TODO: Add a grid view (102)
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: EdgeInsets.all(16),
-        childAspectRatio: 8/9,
-        children: _buildGridCards(context),
-      )
+      body: AsymmetricView(products: ProductsRepository.loadProducts(Category.all)),
     );
+
+//    return Scaffold(
+//      // TODO: Add app bar (102)
+//      appBar: AppBar(
+//        leading: IconButton(
+//          icon: Icon(
+//            Icons.menu,
+//            semanticLabel: 'menu',
+//          ),
+//          onPressed: () {
+//            print('Menu button');
+//          },
+//        ),
+//        title: Text('Shrine'),
+//        actions: <Widget>[
+//          IconButton(
+//            icon: Icon(
+//              Icons.search,
+//              semanticLabel: 'search',
+//            ),
+//            onPressed: () {
+//              print('Search button');
+//            },
+//          ),
+//          IconButton(
+//            icon: Icon(
+//              Icons.tune,
+//              semanticLabel: 'filter',
+//            ),
+//            onPressed: () {
+//              print('Filter button');
+//            },
+//          ),
+//        ],
+//      ),
+//      // TODO: Add a grid view (102)
+//      body: GridView.count(
+//        crossAxisCount: 2,
+//        padding: EdgeInsets.all(16),
+//        childAspectRatio: 8/9,
+//        children: _buildGridCards(context),
+//      )
+//    );
   }
 
   List<Card> _buildGridCards(BuildContext context) {
@@ -69,6 +99,7 @@ class HomePage extends StatelessWidget {
 
     return products.map((product) {
       return Card(
+        elevation: 0,
         clipBehavior: Clip.antiAlias,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -35,7 +35,10 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
+                Image.asset(
+                  'assets/diamond.png',
+                  color: kShrineBackgroundWhite,
+                ),
                 SizedBox(height: 16.0),
                 Text('SHRINE'),
               ],
@@ -46,7 +49,8 @@ class _LoginPageState extends State<LoginPage> {
             // TODO: Wrap Password with AccentColorOverride (103)
             // TODO: Add TextField widgets (101)
             AccentColorOverride(
-              color: kShrineBrown900,
+              //color: kShrineBrown900,
+              color: kShrineAltYellow,
               child: TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
@@ -57,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 12),
             AccentColorOverride(
-              color: kShrineBrown900,
+              //color: kShrineBrown900,
+              color: kShrineAltYellow,
               child: TextField(
                 controller: _passwordController,
                 decoration: InputDecoration(
@@ -72,6 +77,9 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 FlatButton(
                   child: Text('Cancel'),
+                  shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
@@ -79,6 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 RaisedButton(
                   child: Text('Next'),
+                  elevation: 8.0,
+                  shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
